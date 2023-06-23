@@ -22,9 +22,11 @@ function App() {
     if (newDirection > 0) {
       document.getElementById('image').style.animation="right_image_exit 0.5s ease-in";
       document.getElementById('caption').style.animation="right_caption_exit 0.5s ease-in";
+      document.getElementById('toplight').style.animation="right_toplight_exit 0.5s ease-in";
     } else {
       document.getElementById('image').style.animation="left_image_exit 0.5s ease-in";
       document.getElementById('caption').style.animation="left_caption_exit 0.5s ease-in";
+      document.getElementById('toplight').style.animation="left_toplight_exit 0.5s ease-in";
     }
     
     setTimeout(() => {
@@ -34,9 +36,11 @@ function App() {
       if (newDirection > 0) {
         document.getElementById('image').style.animation="right_image_enter 0.5s ease-out";
         document.getElementById('caption').style.animation="right_caption_enter 0.5s ease-out";
+        document.getElementById('toplight').style.animation="right_toplight_enter 0.5s ease-out";
       } else {
         document.getElementById('image').style.animation="left_image_enter 0.5s ease-out";
         document.getElementById('caption').style.animation="left_caption_enter 0.5s ease-out";
+        document.getElementById('toplight').style.animation="left_toplight_enter 0.5s ease-out";
       }
 
     }, 480);
