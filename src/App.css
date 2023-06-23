@@ -98,12 +98,12 @@
 }
 
 @keyframes right_caption_enter {
-  0% {left: calc(168%)}
+  0% {left: calc(153%)}
   100% {left: 68%}
 }
 
 @keyframes right_toplight_enter {
-  0% {left: calc(135%)}
+  0% {left: calc(120%)}
   100% {left: 35%}
 }
 
