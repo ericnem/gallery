@@ -3,11 +3,12 @@
   text-align: center;
 }
 
-.image {
-  max-width:35%;
-  position: relative;
+#image {
+  position: absolute;
+  left:20%;
+  max-width: 35vw;
   height:auto;
-  padding: 60px;
+  padding: 4%;
   background-color: rgb(250, 250, 250);
   box-shadow: -10px 10px 50px 2px rgba(0,0,0);
 }
@@ -19,6 +20,9 @@
 }
 
 #right {
+  top: calc(50% - 20px);
+  position: absolute;
+  right: 50px;
   height:48px;
   transform: rotate(45deg);
   border-radius: 0;
@@ -27,9 +31,13 @@
   border-width: 10px;
   background: transparent;
   outline: none;
-  margin-left: 10%;
+  z-index: 2;
 }
 #left {
+  top: calc(50% - 20px);
+  position: absolute;
+  left: 50px;
+
   height:48px;
   transform: rotate(45deg);
   border-radius: 0;
@@ -38,27 +46,69 @@
   border-width: 10px;
   background: transparent;
   outline: none;
-  margin-right: 10%;
+  z-index: 2;
 }
 #caption {
+  position: absolute;
+  left:68%;
   background-image: url("src/assets/caption.png");
   background-size: cover;
   height:100px;
   width:150px;
   border-radius:0px;
-  margin-left: 5%;
-  margin-top: 5%;
+  margin-top: 8%;
   box-shadow: 10px 10px 50px 2px rgba(0,0,0);
   outline: none;
   z-index:1;
 }
 
+@keyframes right_image_exit {
+  0% {left:20%}
+  100% {left:calc(-1 * (68% + 150px) + 20%)}
+}
+
+@keyframes right_caption_exit {
+  0% {left: 68%}
+  100% {left:-150px}
+}
+
+@keyframes left_image_exit {
+  0% {left:20%}
+  100% {left: calc(104%)}
+}
+
+@keyframes left_caption_exit {
+  0% {left: 68%}
+  100% {left: calc(68% + 84%)}
+}
+
+@keyframes right_image_enter {
+  0% {left: calc(100% + 4%)}
+  100% {left: 20%}
+}
+
+@keyframes right_caption_enter {
+  0% {left: calc(168%)}
+  100% {left: 68%}
+}
+
+@keyframes left_image_enter {
+  0% {left: calc(-150px + (-1 * 48%)) }
+  100% {left: 20%}
+}
+
+@keyframes left_caption_enter {
+  0% {left: -150px}
+  100% {left: 68% }
+}
+
 #toplight {
   position: absolute;
+  width: 30%;
   height:100%;
-  left:8%;
+  left:35%;
   top:0px;
-  opacity:0.3;
+  opacity:0.5;
   z-index:0;
 }
 
