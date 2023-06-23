@@ -1,9 +1,10 @@
 import './App.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import Caption from './components/Caption';
 import ImageObject from './classes/ImageObject';
+import React from 'react';
 
 function App() {
 
@@ -19,6 +20,27 @@ function App() {
 
   // State that keeps track of which image is currently being displayed
   const [page, setPage] = useState(1);
+
+  // Handles inputs from left and right arrow buttons on keyboard
+  const handleKeyDown = (event) => {
+    const code = event.code;
+    if (code == "ArrowRight" && page < (images.length - 1)) {
+      paginate(1);
+    } else if (code == "ArrowLeft" && page > 0) {
+      paginate(-1);
+    }
+  };
+
+  // Effect that adds an event listener everytime page is updated and removes
+  // the listener once unmounted.
+  React.useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+    
+  }, [page]);
 
   // paginate(newDirection) takes input of 1 or -1 depending on the direction
   //   of the rotation. Updates page state and triggers slide transition.
