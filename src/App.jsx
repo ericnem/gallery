@@ -2,21 +2,29 @@ import './App.css'
 import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import Caption from './Caption';
-import ImageObject from './ImageObject';
+import Caption from './components/Caption';
+import ImageObject from './classes/ImageObject';
 
 function App() {
 
-  //TEMPORARY
+  // TEMPORARY
+
   const img1 = new ImageObject("src/img/img1.jpeg","Eagles",2019,"Four eagles in the winter.", "Eric");
   const img2 = new ImageObject("src/img/img2.jpeg","Mountains",2023,"Misty mountains, black and white.", "Eric");
   const img3 = new ImageObject("src/img/img3.jpeg","Dali",1950,"Famous portrait of artist Salvador Dali.", "Eric");
   
+
+  // All images will be saved in a list of ImageObject elements
   const images = [img1, img2, img3];
 
-  // const imgTotal = images.length;
+  // State that keeps track of which image is currently being displayed
   const [page, setPage] = useState(1);
 
+  // paginate(newDirection) takes input of 1 or -1 depending on the direction
+  //   of the rotation. Updates page state and triggers slide transition.
+  // effects:
+  // *  affects state
+  // *  modifies css  
   const paginate = (newDirection) => {
 
     if (newDirection > 0) {
@@ -49,12 +57,19 @@ function App() {
   return (
     <>
     <div id="body">
+
       <img id="toplight" src="src/assets/toplight.png"></img>
+
+      {/* Left slide button */}
       {page > 0 && 
       <button id="left" onClick={() => paginate(-1)}>
       </button>
       }
+
+      {/* Image being Displayed */}
       <img id = "image" src={images[page].url}></img>
+
+      {/* Caption button */}
       <Popup trigger = 
         {<button id="caption"> </button>}
           modal nested
@@ -64,16 +79,18 @@ function App() {
           } 
       </Popup>
 
-
+      {/* Right slide button */}
       { page < images.length-1 && 
         <button id="right" onClick={() => paginate(1)}>
         </button>
       }
     </div>
+
     <div className='footer'>
       <p id="sitename">SITE NAME</p>
       <div style = {{width: "15%", height:"0px",border:"2px solid", color:"#9E9E9E"}}></div>
     </div>
+
     </>
   )
 }
